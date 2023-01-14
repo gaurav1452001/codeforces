@@ -1,0 +1,18 @@
+#include <iostream>
+#define endLIM(i) ((i * (i + 1)) / 2)
+#include <cstdlib>
+using namespace std;
+int main()
+{
+    long long n, j;
+    cin >> n;
+    for (j = 1; j > 0; j++)
+    {
+        if (n <= endLIM(j))
+        {
+            --j;
+            cout << n - endLIM(j);
+            break;
+        }
+    }
+}

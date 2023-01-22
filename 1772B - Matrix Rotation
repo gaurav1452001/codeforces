@@ -1,0 +1,82 @@
+//first solution by me.... I am testing the condition(beautiful) by doing the operation even for the worst time complexity
+#include <bits/stdc++.h>
+using namespace std;
+int solve()
+{
+    int a,b,c,d,max1,min1,f=4,temp;
+    cin>>a>>b>>c>>d;
+    
+    while(f--)
+    {
+    max1=max(max(a,b),max(c,d));
+    min1=min(min(a,b),min(c,d));
+    if(max1==d&&min1==a)                            //checking max and min for only the first and last numbers
+        {
+            cout<<"yes"<<endl;
+            return 0;
+        }
+         else
+        {                        
+           temp=a;                                  //rotating the matrix by swapping 
+           a=c;
+           c=d;
+           d=b;
+           b=temp;
+        }
+     }
+        cout<<"no"<<endl;
+}
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        solve();
+    }
+    return 0;
+} 
+
+//second solution after reading a bunch.... inputting numbers in array and finding position for maximum and minimum number and checking if they are equal to 3
+//since they would always be equal to 3
+#include <bits/stdc++.h>
+using namespace std;
+int solve()
+{
+    int a[4],maxpos=0,minpos=0;
+    for(int i=0;i<4;i++)
+    {
+        cin>>a[i];
+    }
+    maxpos=distance(a, max_element(a, a + 4));
+    minpos=distance(a, min_element(a, a + 4));
+    
+       if(maxpos+minpos==3)
+       {
+           cout<<"yes"<<endl;
+           return 0;
+       }
+        cout<<"no"<<endl;
+}
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        solve();
+    }
+    return 0;
+} 
+
+//general answer in codeforces using xor operator
+#include<bits/stdc++.h>
+using namespace std;
+int t,a,b,c,d;
+int main(){
+cin>>t;
+while(t--){
+cin>>a>>b>>c>>d;
+cout<<(a>b^c<d&&a>c^b<d?"YES\n":"NO\n");
+}
+}
